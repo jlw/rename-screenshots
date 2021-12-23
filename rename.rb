@@ -21,6 +21,10 @@ class ScreenshotTest < MiniTest::Test
     assert_equal '2021-04-19 14.12.27.png', Screenshot.new_name('Screen Shot 2021-04-19 at 2.12.27 PM.png')
   end
 
+  def test_new_name_new_noonish
+    assert_equal '2021-04-19 12.12.27.png', Screenshot.new_name('Screen Shot 2021-04-19 at 12.12.27 PM.png')
+  end
+
   def test_new_name_new_am
     assert_equal '2021-04-05 11.33.36.png', Screenshot.new_name('Screen Shot 2021-04-05 at 11.33.36 AM.png')
   end

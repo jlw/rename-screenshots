@@ -16,7 +16,7 @@ module Screenshot
       return nil unless (match = FILES.match(file_name))
 
       hour = match[4].to_i
-      hour += 12 if match[7] == 'PM'
+      hour += 12 if match[7] == 'PM' && hour != 12
       hour = hour.to_s.rjust(2, '0')
 
       "#{match[1]}-#{match[2]}-#{match[3]} #{hour}.#{match[5]}.#{match[6]}#{' ' if match[8]}#{match[8]}.png"
