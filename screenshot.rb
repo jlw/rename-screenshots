@@ -1,7 +1,7 @@
 require 'fileutils'
 require 'time'
 
-module Screenshot
+class Screenshot
   FILES = Regexp.new(/^Screen ?[Ss]hot (\d{4})-(\d{2})-(\d{2})[ at]+(\d{1,2})\.(\d{2})\.(\d{2}) ?(AM|PM)? ?(\(\d+\))?\.png$/)
   SETFILE = '/usr/bin/SetFile'
   SETFILE_EXISTS = File.exist?(SETFILE)
