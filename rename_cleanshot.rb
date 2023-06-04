@@ -20,6 +20,10 @@ class ScreenshotCleanshotTest < MiniTest::Test
   def test_new_name_old
     assert_equal '2020-07-20 15.44.48.png', ScreenshotCleanshot.new_name('CleanShot 2020-07-20 at 15.44.48.png')
   end
+
+  def test_retina_files
+    assert_equal '2020-07-20 15.44.48.png', ScreenshotCleanshot.new_name('CleanShot 2020-07-20 at 15.44.48@2x.png')
+  end
 end
 
 if MiniTest.run

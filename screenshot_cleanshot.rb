@@ -1,7 +1,7 @@
 require_relative './screenshot'
 
 class ScreenshotCleanshot < Screenshot
-  FILES = Regexp.new(/^CleanShot (\d{4})-(\d{2})-(\d{2})[ at]+(\d{1,2})\.(\d{2})\.(\d{2})\.png$/)
+  FILES = Regexp.new(/^CleanShot (\d{4})-(\d{2})-(\d{2})[ at]+(\d{1,2})\.(\d{2})\.(\d{2})(\@2x)?\.png$/)
 
   class << self
     def find_in_dir(dir_name)
