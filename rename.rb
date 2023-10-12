@@ -14,7 +14,11 @@ class ScreenshotTest < MiniTest::Test
   def test_find_files_some
     result = Screenshot.find_in_dir(File.expand_path('fixtures/some-renamed', __dir__))
 
-    assert_equal ['Screenshot 2020-04-24 10.42.36(2).png', 'Screen Shot 2021-05-22 at 2.16.30 PM.png'], result
+    assert_equal [
+      'Screenshot 2020-04-24 10.42.36(2).png',
+      'Screen Shot 2021-05-22 at 2.16.30 PM.png',
+      'Screenshot 2023-10-12 at 10.27.54 AM.png'
+    ], result
   end
 
   def test_new_name_new_pm
@@ -43,6 +47,10 @@ class ScreenshotTest < MiniTest::Test
 
   def test_new_name_old_multiple
     assert_equal '2020-04-24 10.42.36 (2).png', Screenshot.new_name('Screenshot 2020-04-24 10.42.36(2).png')
+  end
+
+  def test_new_name_sonoma
+    assert_equal '2023-10-12 10.27.54.png', Screenshot.new_name('Screenshot 2023-10-12 at 10.27.54 AM.png')
   end
 end
 

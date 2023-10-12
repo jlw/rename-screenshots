@@ -2,14 +2,18 @@ require 'fileutils'
 require 'time'
 
 class Screenshot
-  FILES = Regexp.new(/^Screen ?[Ss]hot (\d{4})-(\d{2})-(\d{2})[ at]+(\d{1,2})\.(\d{2})\.(\d{2}) ?(AM|PM)? ?(\(\d+\))?\.png$/)
+  # WARNING: macOS Sonoma started adding a special (half or non-breaking?) space only before the AM/PM, but \s is not
+  # matching it, so as a result `[  ]?` looks like it has 2 space characters and is redundant but is necessary.
+  FILES = Regexp.new(
+    /^Screen ?[Ss]hot (\d{4})-(\d{2})-(\d{2})[ at]+(\d{1,2})\.(\d{2})\.(\d{2})[  ]?(AM|PM)? ?(\(\d+\))?\.png$/
+  )
   SETFILE = '/usr/bin/SetFile'
   SETFILE_EXISTS = File.exist?(SETFILE)
 
   class << self
     def find_in_dir(dir_name)
       files = Dir.glob('*.png', base: dir_name)
-      files.select { |file| FILES.match(file) }
+      files.select { |file| FILES.match?(file) }
     end
 
     def new_name(file_name)
