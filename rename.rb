@@ -4,7 +4,7 @@ require 'minitest'
 
 require_relative './screenshot'
 
-class ScreenshotTest < MiniTest::Test
+class ScreenshotTest < Minitest::Test
   def test_find_files_none
     result = Screenshot.find_in_dir(File.expand_path('fixtures/already-renamed', __dir__))
 
@@ -18,7 +18,7 @@ class ScreenshotTest < MiniTest::Test
       'Screenshot 2020-04-24 10.42.36(2).png',
       'Screen Shot 2021-05-22 at 2.16.30 PM.png',
       'Screenshot 2023-10-12 at 10.27.54 AM.png'
-    ], result
+    ].sort, result.sort
   end
 
   def test_new_name_new_pm
@@ -54,7 +54,7 @@ class ScreenshotTest < MiniTest::Test
   end
 end
 
-if MiniTest.run
+if Minitest.run
   Screenshot.run(File.expand_path('~/Desktop'))
 else
   puts 'Tests failed'

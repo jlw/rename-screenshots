@@ -4,7 +4,7 @@ require 'minitest'
 
 require_relative './screenshot_cleanshot'
 
-class ScreenshotCleanshotTest < MiniTest::Test
+class ScreenshotCleanshotTest < Minitest::Test
   def test_find_files_none
     result = ScreenshotCleanshot.find_in_dir(File.expand_path('fixtures/already-renamed', __dir__))
 
@@ -26,7 +26,7 @@ class ScreenshotCleanshotTest < MiniTest::Test
   end
 end
 
-if MiniTest.run
+if Minitest.run
   ScreenshotCleanshot.run(File.expand_path('~/Desktop'))
 else
   puts 'Tests failed'
